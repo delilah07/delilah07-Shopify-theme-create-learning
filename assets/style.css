@@ -1,8 +1,5 @@
 @media (hover: hover), (hover: none) {
   [class*='hover\:']:hover {
-    color: inherit !important; /* Keeps text color changes */
-    background-color: inherit !important; /* Prevents background changes */
-    border-color: inherit !important; /* Keeps border styling */
   }
 }
 button {

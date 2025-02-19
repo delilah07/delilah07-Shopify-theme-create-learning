@@ -1,0 +1,55 @@
+{% comment %} <h1>{{ "general.404.title" | t}}</h1>
+<p>{{ "general.404.subtext_html" | t}}</p> {% endcomment %}
+
+<div class="max-w-md">
+    <div class="text-5xl font-bold my-4">
+        <h1>{{ section.settings.title}}</h1>
+    </div>
+    <div class="my-4">
+        <p class="text-base md:text-xl leading-normal">{{ section.settings.subtext}}</p>
+    </div>
+    <div class="my-4">
+    {% if section.settings.btn-link == blank %}
+        {%  assign shop_link = shop.secure_url %}
+    {% else %}
+        {%  assign shop_link = section.settings.btn-link  %}
+    {% endif %}
+        <a href="{{ shop_link }}" class="px-4 inline py-2 text-base font-medium shadow bg-green-600 hover:bg-green-800 text-white">{{ section.settings.btn-text }}</a>
+    </div>
+</div>
+
+
+
+
+{% schema %}
+    {
+        "name":"template-404",
+        "tag": "section",
+        "class": "flex items-center justify-center text-center py-7 h-screen",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "default": "404 ",
+                "label": "Add 404 title"
+            },
+            {
+                "type": "text",
+                "id": "subtext",
+                "default": "The page you were looking for does not exist",
+                "label": "Add 404 text"
+            },
+            {
+                "type": "url",
+                "id": "btn-link",
+                "label": "Add link of btn"
+            },
+            {
+                "type": "text",
+                "id": "btn-text",
+                "default": "Home page",
+                "label": "Add button text"
+            }
+        ]
+    }
+{% endschema %}
