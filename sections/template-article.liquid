@@ -1,12 +1,45 @@
-<h1>{{ article.title }}</h1>
+<article class="py-8">
 
-{%  if section.settings.enable_author %}<small>{{ article.author }}</small>{% endif %}
-
-{%  if section.settings.enable_date %}<time datetime="{{ article.published_at | date: '%d-%m-%Y' }}">{{ article.published_at | date: '%d %B %Y' }}</time>{% endif %}
-
-<img src="{{ article.image | image_url: 'large' }}" alt="{{ article.image.image-alt }} " width="100%" height="auto">
-
-<div>{{ article.content }}</div>
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'article_title' %}
+                <div class="flex items-center justify-center">
+                    <div class="max-w-7xl text-center">
+                        <a href="{{ blog.url }}" class="text-base uppercase text-gray-500 hover:text-gray-900 font-bold">{{ blog.title }}</a>
+                        <h1 class="text-4xl md:text-6xl font-medium mt-2">{{ article.title }}</h1>
+                    </div>
+                </div>
+            {% when 'article_author' %}
+                <div class="flex items-center justify-center">
+                    <div class="max-w-7xl text-center">
+                        {%  if section.settings.enable_author %}<small>{{ article.author }}</small>{% endif %}
+                    </div>
+                </div>
+            {% when 'article_publised_date' %}
+                <div class="flex items-center justify-center">
+                    <div class="max-w-7xl text-center">
+                        {%  if section.settings.enable_date %}<time datetime="{{ article.published_at | date: '%d-%m-%Y' }}">{{ article.published_at | date: '%d %B %Y' }}</time>{% endif %}
+                    </div>
+                </div>
+            {% when 'article_image' %}
+                <div class="max-w-7xl bg-blue-100 rounded-xl mx-2 md:mx-auto overflow-hidden my-4">
+                    {%  if article.image != blank %}
+                        <img class="w-full h-80 md:h-96 object-cover object-center p-5" src="{{ article.image | image_url: 'large' }}" alt="{{ article.image.image-alt }} " width="100%" height="auto">
+                    {% else %}
+                        {% assign placeholder_image = 'lifestyle-2' %}
+                        {{ placeholder_image| placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
+                    {% endif %}
+                </div>
+            {% when 'article_content' %}
+                <div class="flex items-center justify-center">
+                    <div class="max-w-7xl">
+                        <div>{{ article.content }}</div>
+                    </div>
+                </div>
+            {% else %}
+        {% endcase %}
+    {% endfor %}
+</article>
 
 {% schema %}
     {
