@@ -41,7 +41,7 @@
     {% endfor %}
 </article>
 
-{% if blog.commemts_enabled? %}
+{% if blog.comments_enabled? %}
     <div id="comments" class="my-8">
         {%  if article.comments_count > 0 %}
         <div class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
@@ -63,7 +63,9 @@
 
         </div>
         {% else %}
-            There are no comments in this article
+            <div class="flex-1 border my-4 px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                <span >There are no comments in this article</span>
+            </div>
         {% endif %}
     </div>
     <div id="comment_form" class="mb-8">
