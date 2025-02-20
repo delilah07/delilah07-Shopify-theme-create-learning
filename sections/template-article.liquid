@@ -55,15 +55,15 @@
                 <p class="text-sm">{{ comment.content }}</p>
                </div>
              {% endfor %}
-           {% endpaginate %}
 
-           {%  if paginate.pages > 1 %}
-             {{ paginate | default_pagination }}
-           {% endif %}
+             {%  if paginate.pages > 1 %}
+                {{ paginate | default_pagination }}
+              {% endif %}
+           {% endpaginate %}
 
         </div>
         {% else %}
-            <div class="flex-1 border my-4 px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+            <div class="flex items-center justify-center">
                 <span >There are no comments in this article</span>
             </div>
         {% endif %}
