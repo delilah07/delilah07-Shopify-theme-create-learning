@@ -2,7 +2,7 @@
   {% for article in blog.articles %}
     <div>
         {% if article.image %}
-          <img src="{{ article.image | image_url: 'medium' }}" alt='{{ article.image.alt }}' width="100%" height="auto">
+          <img src="{{ article.image | img_url: 'medium' }}" alt='{{ article.image.alt }}' width="200" height="auto">
         {%  else %}
             {{  'image' | placeholder_svg_tag: 'w-20' }}
         {% endif %}
