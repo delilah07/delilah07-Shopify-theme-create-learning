@@ -16,9 +16,19 @@
         "featured_collection": "all",
         "number_of_products_to_show": 4
       }
+    },
+    "featured_collection_dQ8Xpd": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "dfff",
+        "featured_collection": "pijamas",
+        "number_of_products_to_show": 4
+      }
     }
   },
   "order": [
-    "featured-collection"
+    "featured-collection",
+    "featured_collection_dQ8Xpd"
   ]
 }
