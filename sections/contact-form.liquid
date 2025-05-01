@@ -1,4 +1,7 @@
 <div class="flex flex-col items-center my-8">
+    {% if section.settings.title !=blank %}
+        <h2 class="text-3xl font-medium my-8 md:my-16"></h2>
+    {% endif %}
     {%  form 'contact' %}
         {% if form.errors %}
                    
@@ -57,6 +60,13 @@
 {% schema %}
 {
     "name": "Contact form",
+    "settings": [
+        {
+            "type":"text",
+            "id": "title",
+            "label":"Title"
+        }
+    ],
     "presets": [
         {
             "name": "Contact form"

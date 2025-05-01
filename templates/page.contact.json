@@ -1,0 +1,8 @@
+{
+  "settings": {
+    "template": {
+      "type": "template-page"
+    }
+  },
+  "order": ["template", "contact-form"]
+}
