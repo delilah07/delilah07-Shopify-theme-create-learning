@@ -13,7 +13,7 @@
       "type": "template-page",
       "settings": {}
     },
-    "contact_form_XjNPTn": {
+    "contact_form_fdetVQ": {
       "type": "contact-form",
       "name": "Contact form",
       "settings": {}
@@ -21,6 +21,6 @@
   },
   "order": [
     "template",
-    "contact_form_XjNPTn"
+    "contact_form_fdetVQ"
   ]
 }
