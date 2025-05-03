@@ -1,7 +1,11 @@
 module.exports = {
   content: ['./**/*.liquid'], // Ensure it scans Shopify liquid files
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        94: '22rem',
+      },
+    },
   },
   plugins: [],
   corePlugins: {
