@@ -16,9 +16,12 @@
   .swiper-pagination-bullet-active{
     background-color: black
   }
+  .product__info{
+    height: fit-content
+  }
 </style>
 
-<div class="max-6-xl mx-auto my-8">
+<div class="max-w-6xl mx-auto my-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="product__medias">
             <div class="hidden md:block">
@@ -45,7 +48,74 @@
               </div>
             </div>
         </div>
-        <div class="product__info"></div>
+        <div class="product__info sticky top-5 p-2">
+          {% form 'product', product %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <div class="my-3">
+              <span class="text-xs text-gray-500">{{ product.vendor }}</span>
+            </div>
+             <div class="my-3">
+              <h1 class="text-3xl text-gray-900">{{ product.title }}</h1>
+            </div>
+             <div class="my-3">
+              {%  assign product_price = product.selected_or_first_available_variant %}
+              <span class="text-base text-gray-500 line-through">{{ product_price.compare_at_price | money }}</span>
+              <span class="text-lg text-gray-900">{{ product_price.price | money }}</span>
+              {% if product_price.price < product_price.compare_at_price %}
+                <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white ms-4">Sale</span>
+              {% endif %}
+            </div>
+            <div class="my-3">
+              {% unless product.has_only_default_variant %}
+                <div data-url="{{ product.url }}" data-section="{{ section.id }}">
+                  {% for option in product.options_with_values %}
+                    <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+                    <div class="my-2">
+                      <select 
+                        name="option[{{ option.name | escape }}]" 
+                        id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                        class="w-full border py-1 px-3"
+                      >
+                        {%  for value in option.values %}
+                          <option value="value | escape"
+                            {%  if option.selected_value == value %}
+                              selected="selected"
+                            {% endif %}
+                          >{{ value }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  {% endfor %}
+                </div>                
+              {% endunless %}
+            </div>
+            <div class="my-3">
+              <label for="Quantity-{{ section.id }}">Quantity</label>
+              <div class="my-2">
+                <input type="number" name="quantity" id="Quantity-{{ section.id }}" value="1" min="1"
+                  class="border w-full px-3 py3"
+                >
+              </div>
+            </div>
+            <div class="my-3">
+              <p class="text-gray-700">{{  product.description }}</p>
+            </div>
+            <div class="my-3">
+              <button type="submit" name="add" class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 rounded-sm my-2"
+                {%  if product.selected_or_first_available_variant == false %}
+                  disabled
+                {% endif %}
+              >
+                {% if product.selected_or_first_available_variant.available == false %}
+                  Sold has_only_default_variant
+                {% else %}
+                  Add To Cart
+                {% endif %}
+             
+              </button>
+            </div>
+          {% endform %}
+        </div>
     </div>
 </div>
 
