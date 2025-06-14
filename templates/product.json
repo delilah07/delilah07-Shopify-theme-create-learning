@@ -20,7 +20,7 @@
           "type": "title"
         },
         "price": {
-          "type": "Price"
+          "type": "price"
         },
         "variants": {
           "type": "variant_selector"
