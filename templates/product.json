@@ -11,39 +11,46 @@
   "sections": {
     "template": {
       "type": "template-product",
-      "settings": {},
       "blocks": {
-        "vendor": {
-          "type": "vendor"
-        },
         "title": {
-          "type": "title"
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
         },
         "price": {
-          "type": "price"
+          "type": "price",
+          "settings": {}
         },
         "variants": {
-          "type": "variant_selector"
+          "type": "variant_selector",
+          "settings": {}
         },
         "quantity": {
-          "type": "quantity"
+          "type": "quantity",
+          "settings": {}
         },
         "description": {
-          "type": "description"
+          "type": "description",
+          "settings": {}
         },
         "buttons": {
-          "type": "checkout_buttons"
+          "type": "checkout_buttons",
+          "settings": {}
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "vendor",
         "price",
         "variants",
         "quantity",
         "description",
         "buttons"
-      ]
+      ],
+      "settings": {}
     },
     "contact_form_gNNdbG": {
       "type": "contact-form",
@@ -53,5 +60,8 @@
       }
     }
   },
-  "order": ["template", "contact_form_gNNdbG"]
+  "order": [
+    "template",
+    "contact_form_gNNdbG"
+  ]
 }
