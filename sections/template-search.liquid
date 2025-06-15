@@ -1,0 +1,57 @@
+<div class="container mx-auto">
+    {% paginate search.results by section.settings.number_of_products_per_page %}
+        <h1 class="text-xl my-4 text-center">Search Results</h1>
+
+        <div class="flex justify-center items-center">
+            <form action="{{ routes.search_url }}" method="get" class="border flex rounded">
+                <input type="search" name="q" placeholder="Search" value="{{ search.terms | escape }}" class="px-4 py-2 border-none">
+                <button type="submit" class="bg-gray-900 hover:bg-gray-700 text-white border px-4">Search</button>
+            </form>
+        </div>
+        {%  if search.performed %}
+            {%  if search.results.size > 0 %}
+                <div class="max-w-6xl mx-auto my-5">
+                    <p class="text-gray-500 text-center my-10">{{ search.results.size }} results fot search term <b>{{ search.terms | escape }}</b></p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {% for item in search.results %}
+                            {% case item.object_type %}
+                            {% when 'product' %}
+                                {%  render 'product-card', product_item:item %}
+                            {% when second_value %}
+                                
+                            {% else %}
+                                
+                            {% endcase %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                    <div class="text-center my-4">
+                        <p>No results found for the serch term: <b>{{ search.terms | escape }}</b>. Try to use a different keyword.</p>
+                    </div>
+            {% endif %}
+        {% endif %}
+       
+       
+        {% render 'pagination', pagination: paginate %}
+    {% endpaginate %}
+</div>
+
+{% schema %}
+{
+    "name": "Template Collection",
+    "settings": [
+        {
+            "type": "range",
+            "id": "number_of_products_per_page",
+           
+            "min": 3,
+            "max": 15,
+            "step": 3,
+            "label": "Number of products per page",
+            "default": 3,
+        }
+    ]
+}
+{% endschema %}
+
