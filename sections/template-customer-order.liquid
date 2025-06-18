@@ -18,8 +18,8 @@
                         {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-center object-cover' }}
                     {% endif %}
                 </div>
-                <div class="text-xl font-medium mb-4">
-                    <h2>{{ line_item.product.title | link_to: line_item.product.url}}</h2>
+                <div >
+                    <h2 class="text-xl font-medium mb-4">{{ line_item.product.title | link_to: line_item.product.url}}</h2>
                     <table class="table-auto w-full mb-4">
                         <tbody>
                             <tr>
@@ -28,7 +28,7 @@
                             </tr>
                             <tr>
                                 <td class="border border-gray-200 px-4 py-2">Quantity</td>
-                                <td class="border border-gray-200 px-4 py-2">{{ line_item.quantitye }}</td>
+                                <td class="border border-gray-200 px-4 py-2">{{ line_item.quantity }}</td>
                             </tr>
                             <tr>
                                 <td class="border border-gray-200 px-4 py-2">Final price</td>
@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <h2 class="font-medium mb-4">Delivery address</h2>
-                    {% comment %} <div class="text-gray-500 mb-4">{{ order.shipping_address | format_address }}</div> {% endcomment %}
+                    <div class="text-gray-500 mb-4">{{ order.shipping_address | format_address }}</div>
                      <div class="text-gray-500 mb-4">
                         <p>Address 1: {{ order.shipping_address.address1 }}</p>
                         <p>Address 2: {{ order.shipping_address.address2 }}</p>
