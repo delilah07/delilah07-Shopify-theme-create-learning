@@ -667,6 +667,9 @@
   .ml-1 {
     margin-left: calc(var(--spacing) * 1);
   }
+  .ml-2 {
+    margin-left: calc(var(--spacing) * 2);
+  }
   .ml-3 {
     margin-left: calc(var(--spacing) * 3);
   }
@@ -759,6 +762,9 @@
   }
   .w-full {
     width: 100%;
+  }
+  .w-max {
+    width: max-content;
   }
   .w-screen {
     width: 100vw;
@@ -1478,6 +1484,11 @@
         margin-inline-start: calc(calc(var(--spacing) * 10) * var(--tw-space-x-reverse));
         margin-inline-end: calc(calc(var(--spacing) * 10) * calc(1 - var(--tw-space-x-reverse)));
       }
+    }
+  }
+  .md\:p-12 {
+    @media (width >= 48rem) {
+      padding: calc(var(--spacing) * 12);
     }
   }
   .md\:px-4 {
