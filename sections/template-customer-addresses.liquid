@@ -5,7 +5,7 @@
         <a href="{{ routes.account_url }}" class="text-blue-600 hover:text-blue-800 font-medium underline">Back to account</a>
     </div>
     <div x-show="new_address" class="h-full w-full fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto z-50">
-        <div class="relative max-w-md mx-auto bg-whate border top-20 p-4">
+        <div class="relative max-w-md mx-auto bg-white border top-20 p-4">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-medium">New address</h2>
                 <button  x-on:click="new_address = false" type="button" class="text-gray-500">{% render 'icon-close' %}</button>
@@ -83,6 +83,10 @@
                     class="w-full text-gray-700 border px-4 py-3 focus:outline-none" 
                     type="tel" name="address[phone]" 
                     id="address_phone_{{ form.id }}" value="{{ form.phone }}">
+              </div>
+               <div class="flex gap-2">
+                <button type="submit" class="w-full font-medium text-white bg-gray-700 hover:bg-gray-900 px-4 py-2">Create new address</button>
+                <button type="reset" class="w-full font-medium text-gray-700 hover:text-gray-900 border px-4 py-2">Reset</button>
               </div>
 
             {% endform %}
