@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<script  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 {% assign selected_variant = product.selected_or_first_available_variant %}
 
@@ -205,16 +205,21 @@
    customElements.define('variant-selector', VariantSelector)
 </script>
 <script>
-  const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    pagination: {
-      el: '.swiper-pagination'
-    },
-    navigation: {
-      prevEl: '.swiper-button-prev',
-      nextEl: '.swiper-button-next',
-    }
-  })
+    document.addEventListener('DOMContentLoaded',()=>{
+        try{
+            const swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+                pagination: {
+                el: '.swiper-pagination'
+                },
+                navigation: {
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+                }
+            })
+        } catch(e) {console.log('SwiperJS is not defined')}
+    })
+
 </script>
 
 {%  schema %}

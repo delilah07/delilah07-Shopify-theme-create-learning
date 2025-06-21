@@ -17,9 +17,6 @@
                             {% case item.object_type %}
                             {% when 'product' %}
                                 {%  render 'product-card', product_item:item %}
-                            {% when second_value %}
-                                
-                            {% else %}
                                 
                             {% endcase %}
                         {% endfor %}
