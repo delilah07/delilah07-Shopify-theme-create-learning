@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -30,10 +31,11 @@
     position: absolute;
     top:0;
     left:0;
-    width:100%;
+        width: 100vw;
     height:100%;
     object-fit:contain;
-    max-height: calc(100vh - 77px)
+    max-height: calc(100vh - 77px);
+    min-height: calc(100vh - 77px)
   }
 </style>
 <div x-data="{ productModelOpen: false }">
